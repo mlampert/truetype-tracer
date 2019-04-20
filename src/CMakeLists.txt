@@ -5,14 +5,14 @@ Project(truetypetracer)
 # this figures out the Python include directories and adds them to the
 # header file search path
 execute_process(
-    COMMAND python-config --includes
+    COMMAND python3-config --includes
     COMMAND sed -r "s/-I//g; s/ +/;/g"
     COMMAND tr -d '\n'
     OUTPUT_VARIABLE Python_Includes
 )
 include_directories(${Python_Includes})
 
-find_package( Boost COMPONENTS python REQUIRED)
+find_package( Boost COMPONENTS python3 REQUIRED)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     MESSAGE(STATUS "Boost_LIB_VERSION: " ${Boost_LIB_VERSION})
